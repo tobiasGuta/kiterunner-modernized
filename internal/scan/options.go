@@ -234,6 +234,9 @@ func LoadProxyStream(filename string) ScanOption {
 		for scanner.Scan() {
 			line := strings.TrimSpace(scanner.Text())
 			if line != "" {
+				// Fix: Strip schemes for fasthttp compatibility
+				line = strings.TrimPrefix(line, "http://")
+				line = strings.TrimPrefix(line, "https://")
 				proxies = append(proxies, line)
 			}
 		}

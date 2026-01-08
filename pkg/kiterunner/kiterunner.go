@@ -88,7 +88,7 @@ func handleTarget(ctx context.Context, target *http.Target, reqChan chan *ReqMsg
 			Bytes("target", target.Bytes()).
 			Msg("requests count")
 		// decrement the progress bar by the amount of requests we missed by
-		config.ProgressBar.AddTotal(int64(requestsSent - totalExpectedRequests))
+		config.ProgressBar.AddTotal(uint64(int64(requestsSent - totalExpectedRequests)))
 	}()
 
 	// some random number for a buffer
@@ -324,6 +324,13 @@ routeloop:
 			}
 
 			resp, err = http.DoClient(j.client, req, &reqConfig)
+
+			// Fix: Proxy Failure Handling & Logging
+			if err != nil && config.ProxyManager != nil && retries < maxRetries {
+				retries++
+				log.Error().Err(err).Msg("Proxy connection failed, retrying with next proxy")
+				continue
+			}
 
 			// Check for 429 Too Many Requests
 			if err == nil && resp.StatusCode == 429 && retries < maxRetries {

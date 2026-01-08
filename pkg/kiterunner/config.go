@@ -10,8 +10,8 @@ import (
 )
 
 type ProgressBar interface {
-	Incr(n int64)
-	AddTotal(n int64)
+	Incr(n uint64)
+	AddTotal(n uint64)
 }
 
 type NullProgressBar struct {
@@ -19,12 +19,12 @@ type NullProgressBar struct {
 	hits  int64
 }
 
-func (n *NullProgressBar) Incr(v int64) {
-	atomic.AddInt64(&n.hits, v)
+func (n *NullProgressBar) Incr(v uint64) {
+	atomic.AddInt64(&n.hits, int64(v))
 }
 
-func (n *NullProgressBar) AddTotal(v int64) {
-	atomic.AddInt64(&n.total, v)
+func (n *NullProgressBar) AddTotal(v uint64) {
+	atomic.AddInt64(&n.total, int64(v))
 }
 
 var _ ProgressBar = &NullProgressBar{}

@@ -1,5 +1,11 @@
 # Kiterunner (Modernized)
 
+![](/hack/kiterunner.png)
+
+[![GoDoc](https://godoc.org/github.com/assetnote/kiterunner?status.svg)](https://godoc.org/github.com/assetnote/kiterunner)
+[![GitHub release](https://img.shields.io/github/release/assetnote/kiterunner.svg)](https://github.com/assetnote/kiterunner/releases)
+[![Go Report Card](https://goreportcard.com/badge/github.com/assetnote/kiterunner)](https://goreportcard.com/report/github.com/assetnote/kiterunner)
+
 This is a modernized fork of the original [Assetnote Kiterunner](https://github.com/assetnote/kiterunner).
 
 Kiterunner is a high-performance content discovery tool designed for identifying API endpoints and routes in modern web applications. While traditional tools focus on files and folders, Kiterunner leverages datasets of API specifications (Swagger/OpenAPI) to brutally effectuate endpoint discovery with correct HTTP methods, headers, and parameters.

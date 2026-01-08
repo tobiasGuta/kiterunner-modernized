@@ -37,11 +37,11 @@ func NewProgress(max int64) *ProgressBar {
 	}
 }
 
-func (b *ProgressBar) Incr(n int64) {
-	b.Requests.Add64(n)
+func (b *ProgressBar) Incr(n uint64) {
+	b.Requests.Add64(int64(n))
 }
 
-func (b *ProgressBar) AddTotal(n int64) {
-	b.Requests.ChangeMax64(b.Requests.GetMax64() + n)
+func (b *ProgressBar) AddTotal(n uint64) {
+	b.Requests.ChangeMax64(b.Requests.GetMax64() + int64(n))
 }
 

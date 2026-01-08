@@ -313,7 +313,7 @@ func ScanStdin(ctx context.Context, opts ...ScanOption) error {
 					for _, v := range targets {
 						total += 1
 						if pb != nil {
-							pb.AddTotal(int64(len(routeSlice)))
+							pb.AddTotal(uint64(len(routeSlice)))
 						}
 						tx <- v
 					}
