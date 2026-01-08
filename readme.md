@@ -26,6 +26,12 @@ cd kiterunner
 go install ./cmd/kiterunner
 ```
 
+To make the ./kr command work as you typed it, you need to build it specifically to the current folder:
+
+```bash
+go build -o kr ./cmd/kiterunner
+```
+
 Or using Make:
 
 ```bash
