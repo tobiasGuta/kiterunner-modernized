@@ -119,3 +119,11 @@ Quickly check if a disclosed Swagger file contains accessible endpoints without 
 ```bash
 kr scan target.com -w https://target.com/docs.json
 ```
+
+###  Handling 415 Errors
+Modern APIs often reject requests that lack a content type, even if the route exists. If you see many `415` errors, verify your headers:
+
+```bash
+# Force JSON content type to bypass 415 errors
+./kr scan target.com -w routes.kite -H "Content-Type: application/json"
+```
